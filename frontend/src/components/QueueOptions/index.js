@@ -12,32 +12,32 @@ import EditIcon from "@material-ui/icons/Edit";
 import api from "../../services/api";
 import toastError from "../../errors/toastError";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     //height: 400,
     [theme.breakpoints.down("sm")]: {
-      maxHeight: "20vh",
-    },
+      maxHeight: "20vh"
+    }
   },
   button: {
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(1)
   },
   input: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(1)
   },
   addButton: {
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-  },
+    marginBottom: theme.spacing(2)
+  }
 }));
 
 export function QueueOptionStepper({ queueId, options, updateOptions }) {
   const classes = useStyles();
   const [activeOption, setActiveOption] = useState(-1);
 
-  const handleOption = (index) => async () => {
+  const handleOption = index => async () => {
     setActiveOption(index);
     const option = options[index];
 
@@ -46,13 +46,13 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
         const { data } = await api.request({
           url: "/queue-options",
           method: "GET",
-          params: { queueId, parentId: option.id },
+          params: { queueId, parentId: option.id }
         });
-        const optionList = data.map((option) => {
+        const optionList = data.map(option => {
           return {
             ...option,
             children: [],
-            edition: false,
+            edition: false
           };
         });
         option.children = optionList;
@@ -63,19 +63,19 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
     }
   };
 
-  const handleSave = async (option) => {
+  const handleSave = async option => {
     try {
       if (option.id) {
         await api.request({
           url: `/queue-options/${option.id}`,
           method: "PUT",
-          data: option,
+          data: option
         });
       } else {
         const { data } = await api.request({
           url: `/queue-options`,
           method: "POST",
-          data: option,
+          data: option
         });
         option.id = data.id;
       }
@@ -86,18 +86,18 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
     }
   };
 
-  const handleEdition = (index) => {
+  const handleEdition = index => {
     options[index].edition = !options[index].edition;
     updateOptions();
   };
 
-  const handleDeleteOption = async (index) => {
+  const handleDeleteOption = async index => {
     const option = options[index];
     if (option !== undefined && option.id !== undefined) {
       try {
         await api.request({
           url: `/queue-options/${option.id}`,
-          method: "DELETE",
+          method: "DELETE"
         });
       } catch (e) {
         toastError(e);
@@ -121,14 +121,14 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
     updateOptions();
   };
 
-  const renderTitle = (index) => {
+  const renderTitle = index => {
     const option = options[index];
     if (option.edition) {
       return (
         <>
           <TextField
             value={option.title}
-            onChange={(event) => handleOptionChangeTitle(event, index)}
+            onChange={event => handleOptionChangeTitle(event, index)}
             size="small"
             className={classes.input}
             placeholder="Título da opção"
@@ -136,7 +136,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
           {option.edition && (
             <>
               <IconButton
-                color="primary"
+                color="#29A71A"
                 variant="outlined"
                 size="small"
                 className={classes.button}
@@ -175,7 +175,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
     );
   };
 
-  const renderMessage = (index) => {
+  const renderMessage = index => {
     const option = options[index];
     if (option.edition) {
       return (
@@ -184,7 +184,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
             style={{ width: "100%" }}
             multiline
             value={option.message}
-            onChange={(event) => handleOptionChangeMessage(event, index)}
+            onChange={event => handleOptionChangeMessage(event, index)}
             size="small"
             className={classes.input}
             placeholder="Digite o texto da opção"
@@ -201,7 +201,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
     );
   };
 
-  const handleAddOption = (index) => {
+  const handleAddOption = index => {
     const optionNumber = options[index].children.length + 1;
     options[index].children.push({
       title: "",
@@ -210,7 +210,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
       option: optionNumber,
       queueId,
       parentId: options[index].id,
-      children: [],
+      children: []
     });
     updateOptions();
   };
@@ -227,7 +227,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
           {option.id !== undefined && (
             <>
               <Button
-                color="primary"
+                color="#29A71A"
                 size="small"
                 onClick={() => handleAddOption(index)}
                 startIcon={<AddIcon />}
@@ -275,13 +275,13 @@ export function QueueOptions({ queueId }) {
           const { data } = await api.request({
             url: "/queue-options",
             method: "GET",
-            params: { queueId, parentId: -1 },
+            params: { queueId, parentId: -1 }
           });
-          const optionList = data.map((option) => {
+          const optionList = data.map(option => {
             return {
               ...option,
               children: [],
-              edition: false,
+              edition: false
             };
           });
           setOptions(optionList);
@@ -318,7 +318,7 @@ export function QueueOptions({ queueId }) {
       option: options.length + 1,
       queueId,
       parentId: null,
-      children: [],
+      children: []
     };
     setOptions([...options, newOption]);
   };
@@ -329,7 +329,7 @@ export function QueueOptions({ queueId }) {
       <Typography>
         Opções
         <Button
-          color="primary"
+          color="#29A71A"
           size="small"
           onClick={addOption}
           startIcon={<AddIcon />}

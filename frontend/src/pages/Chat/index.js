@@ -13,7 +13,7 @@ import {
   Paper,
   Tab,
   Tabs,
-  TextField,
+  TextField
 } from "@material-ui/core";
 import ChatList from "./ChatList";
 import ChatMessages from "./ChatMessages";
@@ -26,7 +26,7 @@ import { has, isObject } from "lodash";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   mainContainer: {
     display: "flex",
     flexDirection: "column",
@@ -35,25 +35,25 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     height: `calc(100% - 48px)`,
     overflowY: "hidden",
-    border: "1px solid rgba(0, 0, 0, 0.12)",
+    border: "1px solid rgba(0, 0, 0, 0.12)"
   },
   gridContainer: {
     flex: 1,
     height: "100%",
     border: "1px solid rgba(0, 0, 0, 0.12)",
-    backgroundColor: "#eee",
+    backgroundColor: "#eee"
   },
   gridItem: {
-    height: "100%",
+    height: "100%"
   },
   gridItemTab: {
     height: "92%",
-    width: "100%",
+    width: "100%"
   },
   btnContainer: {
     textAlign: "right",
-    padding: 10,
-  },
+    padding: 10
+  }
 }));
 
 export function ChatModal({
@@ -61,7 +61,7 @@ export function ChatModal({
   chat,
   type,
   handleClose,
-  handleLoadNewChat,
+  handleLoadNewChat
 }) {
   const [users, setUsers] = useState([]);
   const [title, setTitle] = useState("");
@@ -70,9 +70,9 @@ export function ChatModal({
     setTitle("");
     setUsers([]);
     if (type === "edit") {
-      const userList = chat.users.map((u) => ({
+      const userList = chat.users.map(u => ({
         id: u.user.id,
-        name: u.user.name,
+        name: u.user.name
       }));
       setUsers(userList);
       setTitle(chat.title);
@@ -84,12 +84,12 @@ export function ChatModal({
       if (type === "edit") {
         await api.put(`/chats/${chat.id}`, {
           users,
-          title,
+          title
         });
       } else {
         const { data } = await api.post("/chats", {
           users,
-          title,
+          title
         });
         handleLoadNewChat(data);
       }
@@ -112,7 +112,7 @@ export function ChatModal({
               label="Título"
               placeholder="Título"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={e => setTitle(e.target.value)}
               variant="outlined"
               size="small"
               fullWidth
@@ -120,17 +120,17 @@ export function ChatModal({
           </Grid>
           <Grid xs={12} item>
             <UsersFilter
-              onFiltered={(users) => setUsers(users)}
+              onFiltered={users => setUsers(users)}
               initialUsers={users}
             />
           </Grid>
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={handleClose} color="#29A71A">
           Fechar
         </Button>
-        <Button onClick={handleSave} color="primary" variant="contained">
+        <Button onClick={handleSave} color="#29A71A" variant="contained">
           Salvar
         </Button>
       </DialogActions>
@@ -165,14 +165,14 @@ function Chat(props) {
 
   useEffect(() => {
     if (isMounted.current) {
-      findChats().then((data) => {
+      findChats().then(data => {
         const { records } = data;
         if (records.length > 0) {
           setChats(records);
           setChatsPageInfo(data);
 
           if (id && records.length) {
-            const chat = records.find((r) => r.uuid === id);
+            const chat = records.find(r => r.uuid === id);
             selectChat(chat);
           }
         }
@@ -198,16 +198,16 @@ function Chat(props) {
     const companyId = localStorage.getItem("companyId");
     const socket = socketConnection({ companyId });
 
-    socket.on(`company-${companyId}-chat-user-${user.id}`, (data) => {
+    socket.on(`company-${companyId}-chat-user-${user.id}`, data => {
       if (data.action === "create") {
-        setChats((prev) => [data.record, ...prev]);
+        setChats(prev => [data.record, ...prev]);
       }
       if (data.action === "update") {
-        const changedChats = chats.map((chat) => {
+        const changedChats = chats.map(chat => {
           if (chat.id === data.record.id) {
             setCurrentChat(data.record);
             return {
-              ...data.record,
+              ...data.record
             };
           }
           return chat;
@@ -216,9 +216,9 @@ function Chat(props) {
       }
     });
 
-    socket.on(`company-${companyId}-chat`, (data) => {
+    socket.on(`company-${companyId}-chat`, data => {
       if (data.action === "delete") {
-        const filteredChats = chats.filter((c) => c.id !== +data.id);
+        const filteredChats = chats.filter(c => c.id !== +data.id);
         setChats(filteredChats);
         setMessages([]);
         setMessagesPage(1);
@@ -229,13 +229,13 @@ function Chat(props) {
     });
 
     if (isObject(currentChat) && has(currentChat, "id")) {
-      socket.on(`company-${companyId}-chat-${currentChat.id}`, (data) => {
+      socket.on(`company-${companyId}-chat-${currentChat.id}`, data => {
         if (data.action === "new-message") {
-          setMessages((prev) => [...prev, data.newMessage]);
-          const changedChats = chats.map((chat) => {
+          setMessages(prev => [...prev, data.newMessage]);
+          const changedChats = chats.map(chat => {
             if (chat.id === data.newMessage.chatId) {
               return {
-                ...data.chat,
+                ...data.chat
               };
             }
             return chat;
@@ -245,10 +245,10 @@ function Chat(props) {
         }
 
         if (data.action === "update") {
-          const changedChats = chats.map((chat) => {
+          const changedChats = chats.map(chat => {
             if (chat.id === data.chat.id) {
               return {
-                ...data.chat,
+                ...data.chat
               };
             }
             return chat;
@@ -265,7 +265,7 @@ function Chat(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentChat]);
 
-  const selectChat = (chat) => {
+  const selectChat = chat => {
     try {
       setMessages([]);
       setMessagesPage(1);
@@ -274,31 +274,31 @@ function Chat(props) {
     } catch (err) {}
   };
 
-  const sendMessage = async (contentMessage) => {
+  const sendMessage = async contentMessage => {
     setLoading(true);
     try {
       await api.post(`/chats/${currentChat.id}/messages`, {
-        message: contentMessage,
+        message: contentMessage
       });
     } catch (err) {}
     setLoading(false);
   };
 
-  const deleteChat = async (chat) => {
+  const deleteChat = async chat => {
     try {
       await api.delete(`/chats/${chat.id}`);
     } catch (err) {}
   };
 
-  const findMessages = async (chatId) => {
+  const findMessages = async chatId => {
     setLoading(true);
     try {
       const { data } = await api.get(
         `/chats/${chatId}/messages?pageNumber=${messagesPage}`
       );
-      setMessagesPage((prev) => prev + 1);
+      setMessagesPage(prev => prev + 1);
       setMessagesPageInfo(data);
-      setMessages((prev) => [...data.records, ...prev]);
+      setMessages(prev => [...data.records, ...prev]);
     } catch (err) {}
     setLoading(false);
   };
@@ -329,7 +329,7 @@ function Chat(props) {
                   setDialogType("new");
                   setShowDialog(true);
                 }}
-                color="primary"
+                color="#29A71A"
                 variant="contained"
               >
                 Nova
@@ -340,8 +340,8 @@ function Chat(props) {
             chats={chats}
             pageInfo={chatsPageInfo}
             loading={loading}
-            handleSelectChat={(chat) => selectChat(chat)}
-            handleDeleteChat={(chat) => deleteChat(chat)}
+            handleSelectChat={chat => selectChat(chat)}
+            handleDeleteChat={chat => deleteChat(chat)}
             handleEditChat={() => {
               setDialogType("edit");
               setShowDialog(true);
@@ -371,8 +371,8 @@ function Chat(props) {
         <Grid md={12} item>
           <Tabs
             value={tab}
-            indicatorColor="primary"
-            textColor="primary"
+            indicatorcolor="#29A71A"
+            textcolor="#29A71A"
             onChange={(e, v) => setTab(v)}
             aria-label="disabled tabs example"
           >
@@ -385,7 +385,7 @@ function Chat(props) {
             <div className={classes.btnContainer}>
               <Button
                 onClick={() => setShowDialog(true)}
-                color="primary"
+                color="#29A71A"
                 variant="contained"
               >
                 Novo
@@ -395,8 +395,8 @@ function Chat(props) {
               chats={chats}
               pageInfo={chatsPageInfo}
               loading={loading}
-              handleSelectChat={(chat) => selectChat(chat)}
-              handleDeleteChat={(chat) => deleteChat(chat)}
+              handleSelectChat={chat => selectChat(chat)}
+              handleDeleteChat={chat => deleteChat(chat)}
             />
           </Grid>
         )}
@@ -424,7 +424,7 @@ function Chat(props) {
         type={dialogType}
         open={showDialog}
         chat={currentChat}
-        handleLoadNewChat={(data) => {
+        handleLoadNewChat={data => {
           setMessages([]);
           setMessagesPage(1);
           setCurrentChat(data);

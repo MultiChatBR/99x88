@@ -14,9 +14,9 @@ import SpeedIcon from "@material-ui/icons/Speed";
 import GroupIcon from "@material-ui/icons/Group";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import PersonIcon from "@material-ui/icons/Person";
-import TodayIcon from '@material-ui/icons/Today';
-import BlockIcon from '@material-ui/icons/Block';
-import DoneIcon from '@material-ui/icons/Done';
+import TodayIcon from "@material-ui/icons/Today";
+import BlockIcon from "@material-ui/icons/Block";
+import DoneIcon from "@material-ui/icons/Done";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { grey, blue } from "@material-ui/core/colors";
@@ -35,10 +35,10 @@ import useCompanies from "../../hooks/useCompanies";
 import { isEmpty } from "lodash";
 import moment from "moment";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   container: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
   },
   fixedHeightPaper: {
     padding: theme.spacing(2),
@@ -46,33 +46,33 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     height: 240,
     overflowY: "auto",
-    ...theme.scrollbarStyles,
+    ...theme.scrollbarStyles
   },
   cardAvatar: {
     fontSize: "55px",
     color: grey[500],
     backgroundColor: "#ffffff",
     width: theme.spacing(7),
-    height: theme.spacing(7),
+    height: theme.spacing(7)
   },
   cardTitle: {
     fontSize: "18px",
-    color: blue[700],
+    color: blue[700]
   },
   cardSubtitle: {
     color: grey[600],
-    fontSize: "14px",
+    fontSize: "14px"
   },
   alignRight: {
-    textAlign: "right",
+    textAlign: "right"
   },
   fullWidth: {
-    width: "100%",
+    width: "100%"
   },
   selectContainer: {
     width: "100%",
-    textAlign: "left",
-  },
+    textAlign: "left"
+  }
 }));
 
 const Dashboard = () => {
@@ -120,21 +120,21 @@ const Dashboard = () => {
 
     if (period > 0) {
       params = {
-        days: period,
+        days: period
       };
     }
 
     if (!isEmpty(dateFrom) && moment(dateFrom).isValid()) {
       params = {
         ...params,
-        date_from: moment(dateFrom).format("YYYY-MM-DD"),
+        date_from: moment(dateFrom).format("YYYY-MM-DD")
       };
     }
 
     if (!isEmpty(dateTo) && moment(dateTo).isValid()) {
       params = {
         ...params,
-        date_to: moment(dateTo).format("YYYY-MM-DD"),
+        date_to: moment(dateTo).format("YYYY-MM-DD")
       };
     }
 
@@ -145,8 +145,6 @@ const Dashboard = () => {
     }
 
     const data = await find(params);
-
-
 
     setCounters(data.counters);
     if (isArray(data.attendants)) {
@@ -163,7 +161,7 @@ const Dashboard = () => {
       await loadCompanies();
     }
     fetchData();
-  }, [])
+  }, []);
   //let companyDueDate = localStorage.getItem("companyDueDate");
   //const companyDueDate = localStorage.getItem("companyDueDate").toString();
   const companyId = localStorage.getItem("companyId");
@@ -194,10 +192,10 @@ const Dashboard = () => {
               label="Data Inicial"
               type="date"
               value={dateFrom}
-              onChange={(e) => setDateFrom(e.target.value)}
+              onChange={e => setDateFrom(e.target.value)}
               className={classes.fullWidth}
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
             />
           </Grid>
@@ -206,10 +204,10 @@ const Dashboard = () => {
               label="Data Final"
               type="date"
               value={dateTo}
-              onChange={(e) => setDateTo(e.target.value)}
+              onChange={e => setDateTo(e.target.value)}
               className={classes.fullWidth}
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
             />
           </Grid>
@@ -224,7 +222,7 @@ const Dashboard = () => {
               labelId="period-selector-label"
               id="period-selector"
               value={period}
-              onChange={(e) => handleChangePeriod(e.target.value)}
+              onChange={e => handleChangePeriod(e.target.value)}
             >
               <MenuItem value={0}>Nenhum selecionado</MenuItem>
               <MenuItem value={3}>Últimos 3 dias</MenuItem>
@@ -264,7 +262,7 @@ const Dashboard = () => {
               <Select
                 labelId="period-selector-label"
                 value={filterType}
-                onChange={(e) => handleChangeFilterType(e.target.value)}
+                onChange={e => handleChangeFilterType(e.target.value)}
               >
                 <MenuItem value={1}>Filtro por Data</MenuItem>
                 <MenuItem value={2}>Filtro por Período</MenuItem>
@@ -280,7 +278,7 @@ const Dashboard = () => {
               loading={loading}
               onClick={() => fetchData()}
               variant="contained"
-              color="primary"
+              color="#29A71A"
             >
               Filtrar
             </ButtonWithSpinner>

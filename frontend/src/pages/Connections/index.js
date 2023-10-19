@@ -260,7 +260,7 @@ const Connections = () => {
           <Button
             size="small"
             variant="contained"
-            color="primary"
+            color="#29A71A"
             onClick={() => handleOpenQrModal(whatsApp)}
           >
             {i18n.t("connections.buttons.qrcode")}
@@ -271,7 +271,7 @@ const Connections = () => {
             <Button
               size="small"
               variant="outlined"
-              color="primary"
+              color="#29A71A"
               onClick={() => handleStartWhatsAppSession(whatsApp.id)}
             >
               {i18n.t("connections.buttons.tryAgain")}
@@ -376,7 +376,7 @@ const Connections = () => {
               <React.Fragment>
                 <Button
                   variant="contained"
-                  color="primary"
+                  color="#29A71A"
                   {...bindTrigger(popupState)}
                 >
                   Adicionar Conexão

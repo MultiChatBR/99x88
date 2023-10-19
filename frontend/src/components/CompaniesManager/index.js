@@ -13,7 +13,7 @@ import {
   TableCell,
   TableRow,
   IconButton,
-  Select,
+  Select
 } from "@material-ui/core";
 import { Formik, Form, Field } from "formik";
 import ButtonWithSpinner from "../ButtonWithSpinner";
@@ -31,41 +31,41 @@ import { useDate } from "../../hooks/useDate";
 
 import moment from "moment";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    width: "100%",
+    width: "100%"
   },
   mainPaper: {
     width: "100%",
     flex: 1,
-    padding: theme.spacing(2),
+    padding: theme.spacing(2)
   },
   fullWidth: {
-    width: "100%",
+    width: "100%"
   },
   tableContainer: {
     width: "100%",
     overflowX: "scroll",
-    ...theme.scrollbarStyles,
+    ...theme.scrollbarStyles
   },
   textfield: {
-    width: "100%",
+    width: "100%"
   },
   textRight: {
-    textAlign: "right",
+    textAlign: "right"
   },
   row: {
     paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
   },
   control: {
     paddingRight: theme.spacing(1),
-    paddingLeft: theme.spacing(1),
+    paddingLeft: theme.spacing(1)
   },
   buttonContainer: {
     textAlign: "right",
-    padding: theme.spacing(1),
-  },
+    padding: theme.spacing(1)
+  }
 }));
 
 export function CompanyForm(props) {
@@ -84,7 +84,7 @@ export function CompanyForm(props) {
     campaignsEnabled: false,
     dueDate: "",
     recurrence: "",
-    ...initialValue,
+    ...initialValue
   });
 
   const { list: listPlans } = usePlans();
@@ -99,7 +99,7 @@ export function CompanyForm(props) {
   }, []);
 
   useEffect(() => {
-    setRecord((prev) => {
+    setRecord(prev => {
       if (moment(initialValue).isValid()) {
         initialValue.dueDate = moment(initialValue.dueDate).format(
           "YYYY-MM-DD"
@@ -107,12 +107,12 @@ export function CompanyForm(props) {
       }
       return {
         ...prev,
-        ...initialValue,
+        ...initialValue
       };
     });
   }, [initialValue]);
 
-  const handleSubmit = async (data) => {
+  const handleSubmit = async data => {
     if (data.dueDate === "" || moment(data.dueDate).isValid() === false) {
       data.dueDate = null;
     }
@@ -124,8 +124,8 @@ export function CompanyForm(props) {
     try {
       const { data } = await api.get("/users/list", {
         params: {
-          companyId: initialValue.id,
-        },
+          companyId: initialValue.id
+        }
       });
       if (isArray(data) && data.length) {
         setFirstUser(head(data));
@@ -290,7 +290,7 @@ export function CompanyForm(props) {
                     type="date"
                     name="dueDate"
                     InputLabelProps={{
-                      shrink: true,
+                      shrink: true
                     }}
                     variant="outlined"
                     fullWidth
@@ -353,7 +353,7 @@ export function CompanyForm(props) {
                           loading={loading}
                           onClick={() => incrementDueDate()}
                           variant="contained"
-                          color="primary"
+                          color="#29A71A"
                         >
                           + Vencimento
                         </ButtonWithSpinner>
@@ -365,7 +365,7 @@ export function CompanyForm(props) {
                           loading={loading}
                           onClick={() => handleOpenModalUsers()}
                           variant="contained"
-                          color="primary"
+                          color="#29A71A"
                         >
                           Usuário
                         </ButtonWithSpinner>
@@ -379,7 +379,7 @@ export function CompanyForm(props) {
                       loading={loading}
                       type="submit"
                       variant="contained"
-                      color="primary"
+                      color="#29A71A"
                     >
                       Salvar
                     </ButtonWithSpinner>
@@ -399,21 +399,21 @@ export function CompaniesManagerGrid(props) {
   const classes = useStyles();
   const { dateToClient } = useDate();
 
-  const renderStatus = (row) => {
+  const renderStatus = row => {
     return row.status === false ? "Não" : "Sim";
   };
 
-  const renderPlan = (row) => {
+  const renderPlan = row => {
     return row.planId !== null ? row.plan.name : "-";
   };
 
-  const renderCampaignsStatus = (row) => {
+  const renderCampaignsStatus = row => {
     if (
       has(row, "settings") &&
       isArray(row.settings) &&
       row.settings.length > 0
     ) {
-      const setting = row.settings.find((s) => s.key === "campaignsEnabled");
+      const setting = row.settings.find(s => s.key === "campaignsEnabled");
       if (setting) {
         return setting.value === "true" ? "Habilitadas" : "Desabilitadas";
       }
@@ -421,7 +421,7 @@ export function CompaniesManagerGrid(props) {
     return "Desabilitadas";
   };
 
-  const rowStyle = (record) => {
+  const rowStyle = record => {
     if (moment(record.dueDate).isValid()) {
       const now = moment();
       const dueDate = moment(record.dueDate);
@@ -504,7 +504,7 @@ export default function CompaniesManager() {
     status: true,
     campaignsEnabled: false,
     dueDate: "",
-    recurrence: "",
+    recurrence: ""
   });
 
   useEffect(() => {
@@ -523,7 +523,7 @@ export default function CompaniesManager() {
     setLoading(false);
   };
 
-  const handleSubmit = async (data) => {
+  const handleSubmit = async data => {
     setLoading(true);
     try {
       if (data.id !== undefined) {
@@ -560,7 +560,7 @@ export default function CompaniesManager() {
   };
 
   const handleCancel = () => {
-    setRecord((prev) => ({
+    setRecord(prev => ({
       ...prev,
       name: "",
       email: "",
@@ -569,22 +569,22 @@ export default function CompaniesManager() {
       status: true,
       campaignsEnabled: false,
       dueDate: "",
-      recurrence: "",
+      recurrence: ""
     }));
   };
 
-  const handleSelect = (data) => {
+  const handleSelect = data => {
     let campaignsEnabled = false;
 
     const setting = data.settings.find(
-      (s) => s.key.indexOf("campaignsEnabled") > -1
+      s => s.key.indexOf("campaignsEnabled") > -1
     );
     if (setting) {
       campaignsEnabled =
         setting.value === "true" || setting.value === "enabled";
     }
 
-    setRecord((prev) => ({
+    setRecord(prev => ({
       ...prev,
       id: data.id,
       name: data.name || "",
@@ -594,7 +594,7 @@ export default function CompaniesManager() {
       status: data.status === false ? false : true,
       campaignsEnabled,
       dueDate: data.dueDate || "",
-      recurrence: data.recurrence || "",
+      recurrence: data.recurrence || ""
     }));
   };
 

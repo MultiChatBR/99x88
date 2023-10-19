@@ -29,7 +29,7 @@ const QrcodeModal = ({ open, onClose, whatsAppId }) => {
     const companyId = localStorage.getItem("companyId");
     const socket = socketConnection({ companyId });
 
-    socket.on(`company-${companyId}-whatsappSession`, (data) => {
+    socket.on(`company-${companyId}-whatsappSession`, data => {
       if (data.action === "update" && data.session.id === whatsAppId) {
         setQrCode(data.session.qrcode);
       }
@@ -48,7 +48,7 @@ const QrcodeModal = ({ open, onClose, whatsAppId }) => {
     <Dialog open={open} onClose={onClose} maxWidth="lg" scroll="paper">
       <DialogContent>
         <Paper elevation={0}>
-          <Typography color="primary" gutterBottom>
+          <Typography color="#29A71A" gutterBottom>
             {i18n.t("qrCode.message")}
           </Typography>
           {qrCode ? (

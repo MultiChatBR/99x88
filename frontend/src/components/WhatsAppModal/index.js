@@ -16,7 +16,7 @@ import {
   TextField,
   Switch,
   FormControlLabel,
-  Grid,
+  Grid
 } from "@material-ui/core";
 
 import api from "../../services/api";
@@ -24,21 +24,21 @@ import { i18n } from "../../translate/i18n";
 import toastError from "../../errors/toastError";
 import QueueSelect from "../QueueSelect";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    flexWrap: "wrap",
+    flexWrap: "wrap"
   },
 
   multFieldLine: {
     display: "flex",
     "& > *:not(:last-child)": {
-      marginRight: theme.spacing(1),
-    },
+      marginRight: theme.spacing(1)
+    }
   },
 
   btnWrapper: {
-    position: "relative",
+    position: "relative"
   },
 
   buttonProgress: {
@@ -47,15 +47,15 @@ const useStyles = makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     marginTop: -12,
-    marginLeft: -12,
-  },
+    marginLeft: -12
+  }
 }));
 
 const SessionSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
-    .required("Required"),
+    .required("Required")
 });
 
 const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
@@ -71,7 +71,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
     provider: "beta",
     useNPS: false,
     expiresTicketNPS: 3,
-    expiresTicket: 0,
+    expiresTicket: 0
   };
   const [whatsApp, setWhatsApp] = useState(initialState);
   const [selectedQueueIds, setSelectedQueueIds] = useState([]);
@@ -84,7 +84,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
         const { data } = await api.get(`whatsapp/${whatsAppId}?session=0`);
         setWhatsApp(data);
 
-        const whatsQueueIds = data.queues?.map((queue) => queue.id);
+        const whatsQueueIds = data.queues?.map(queue => queue.id);
         setSelectedQueueIds(whatsQueueIds);
       } catch (err) {
         toastError(err);
@@ -93,7 +93,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
     fetchSession();
   }, [whatsAppId]);
 
-  const handleSaveWhatsApp = async (values) => {
+  const handleSaveWhatsApp = async values => {
     const whatsappData = { ...values, queueIds: selectedQueueIds };
     delete whatsappData["queues"];
     delete whatsappData["session"];
@@ -158,14 +158,13 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                         margin="dense"
                         className={classes.textField}
                       />
-
                     </Grid>
                     <Grid style={{ paddingTop: 15 }} item>
                       <FormControlLabel
                         control={
                           <Field
                             as={Switch}
-                            color="primary"
+                            color="#29A71A"
                             name="isDefault"
                             checked={values.isDefault}
                           />
@@ -175,17 +174,20 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                     </Grid>
 
                     <Grid item>
-                    <Field
+                      <Field
                         as={TextField}
-                        label={'Encerrar chat após x horas'}
+                        label={"Encerrar chat após x horas"}
                         name="expiresTicket"
-                        error={touched.expiresTicket && Boolean(errors.expiresTicket)}
-                        helperText={touched.expiresTicket && errors.expiresTicket}
+                        error={
+                          touched.expiresTicket && Boolean(errors.expiresTicket)
+                        }
+                        helperText={
+                          touched.expiresTicket && errors.expiresTicket
+                        }
                         variant="outlined"
                         margin="dense"
                         className={classes.textFieldTime}
                       />
-
                     </Grid>
                   </Grid>
                 </div>
@@ -278,7 +280,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                 </div>
                 <QueueSelect
                   selectedQueueIds={selectedQueueIds}
-                  onChange={(selectedIds) => setSelectedQueueIds(selectedIds)}
+                  onChange={selectedIds => setSelectedQueueIds(selectedIds)}
                 />
               </DialogContent>
               <DialogActions>
@@ -292,7 +294,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                 </Button>
                 <Button
                   type="submit"
-                  color="primary"
+                  color="#29A71A"
                   disabled={isSubmitting}
                   variant="contained"
                   className={classes.btnWrapper}

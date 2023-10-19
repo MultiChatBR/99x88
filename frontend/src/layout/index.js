@@ -13,7 +13,7 @@ import {
   IconButton,
   Menu,
   useTheme,
-  useMediaQuery,
+  useMediaQuery
 } from "@material-ui/core";
 
 import MenuIcon from "@material-ui/icons/Menu";
@@ -35,49 +35,49 @@ import ChatPopover from "../pages/Chat/ChatPopover";
 
 const drawerWidth = 300;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     height: "100vh",
     [theme.breakpoints.down("sm")]: {
-      height: "calc(100vh - 56px)",
-    },
+      height: "calc(100vh - 56px)"
+    }
   },
 
   toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
+    paddingRight: 24 // keep right padding when drawer closed
   },
   toolbarIcon: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     padding: "0 8px",
-    minHeight: "48px",
+    minHeight: "48px"
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   menuButton: {
-    marginRight: 36,
+    marginRight: 36
   },
   menuButtonHidden: {
-    display: "none",
+    display: "none"
   },
   title: {
     flexGrow: 1,
-    fontSize: 14,
+    fontSize: 14
   },
   drawerPaper: {
     position: "relative",
@@ -85,44 +85,44 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   drawerPaperClose: {
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
     width: theme.spacing(7),
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9),
-    },
+      width: theme.spacing(9)
+    }
   },
   appBarSpacer: {
-    minHeight: "48px",
+    minHeight: "48px"
   },
   content: {
     flex: 1,
     overflow: "auto",
-    ...theme.scrollbarStyles,
+    ...theme.scrollbarStyles
   },
   container: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
   },
   paper: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    flexDirection: "column"
   },
   containerWithScroll: {
     flex: 1,
     padding: theme.spacing(1),
     overflowY: "scroll",
-    ...theme.scrollbarStyles,
-  },
+    ...theme.scrollbarStyles
+  }
 }));
 
 const LoggedInLayout = ({ children }) => {
@@ -158,7 +158,7 @@ const LoggedInLayout = ({ children }) => {
 
     const socket = socketConnection({ companyId });
 
-    socket.on(`company-${companyId}-auth`, (data) => {
+    socket.on(`company-${companyId}-auth`, data => {
       if (data.user.id === +userId) {
         toastError("Sua conta foi acessada em outro computador.");
         setTimeout(() => {
@@ -180,7 +180,7 @@ const LoggedInLayout = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleMenu = (event) => {
+  const handleMenu = event => {
     setAnchorEl(event.currentTarget);
     setMenuOpen(true);
   };
@@ -219,12 +219,21 @@ const LoggedInLayout = ({ children }) => {
           paper: clsx(
             classes.drawerPaper,
             !drawerOpen && classes.drawerPaperClose
-          ),
+          )
         }}
         open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          <img src={logo} style={{ margin: "0 auto", height: '100%', width: '100%',alignSelf: 'center' }} alt="logo" />
+          <img
+            src={logo}
+            style={{
+              margin: "0 auto",
+              height: "100%",
+              width: "100%",
+              alignSelf: "center"
+            }}
+            alt="logo"
+          />
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
             <ChevronLeftIcon />
           </IconButton>
@@ -243,7 +252,7 @@ const LoggedInLayout = ({ children }) => {
       <AppBar
         position="absolute"
         className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}
-        color="primary"
+        color="#29A71A"
       >
         <Toolbar variant="dense" className={classes.toolbar}>
           <IconButton
@@ -286,7 +295,6 @@ const LoggedInLayout = ({ children }) => {
               aria-haspopup="true"
               onClick={handleMenu}
               variant="contained"
-
             >
               <AccountCircle />
             </IconButton>
@@ -296,11 +304,11 @@ const LoggedInLayout = ({ children }) => {
               getContentAnchorEl={null}
               anchorOrigin={{
                 vertical: "bottom",
-                horizontal: "right",
+                horizontal: "right"
               }}
               transformOrigin={{
                 vertical: "top",
-                horizontal: "right",
+                horizontal: "right"
               }}
               open={menuOpen}
               onClose={handleCloseMenu}

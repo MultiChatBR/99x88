@@ -35,13 +35,13 @@ import AndroidIcon from "@material-ui/icons/Android";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import TicketMessagesDialog from "../TicketMessagesDialog";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   ticket: {
-    position: "relative",
+    position: "relative"
   },
 
   pendingTicket: {
-    cursor: "unset",
+    cursor: "unset"
   },
 
   noTicketsDiv: {
@@ -50,59 +50,59 @@ const useStyles = makeStyles((theme) => ({
     margin: 40,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
 
   noTicketsText: {
     textAlign: "center",
     color: "rgb(104, 121, 146)",
     fontSize: "14px",
-    lineHeight: "1.4",
+    lineHeight: "1.4"
   },
 
   noTicketsTitle: {
     textAlign: "center",
     fontSize: "16px",
     fontWeight: "600",
-    margin: "0px",
+    margin: "0px"
   },
 
   contactNameWrapper: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
 
   lastMessageTime: {
     justifySelf: "flex-end",
-    textAlign: "right",
+    textAlign: "right"
   },
 
   closedBadge: {
     alignSelf: "center",
     justifySelf: "flex-end",
     marginRight: 32,
-    marginLeft: "auto",
+    marginLeft: "auto"
   },
 
   contactLastMessage: {
-    paddingRight: 20,
+    paddingRight: 20
   },
 
   newMessagesCount: {
     alignSelf: "center",
     marginRight: 8,
-    marginLeft: "auto",
+    marginLeft: "auto"
   },
 
   badgeStyle: {
     color: "white",
     backgroundColor: green[500],
-    right: 20,
+    right: 20
   },
 
   acceptButton: {
     position: "absolute",
-    right: "108px",
+    right: "108px"
   },
 
   ticketQueueColor: {
@@ -111,12 +111,12 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     position: "absolute",
     top: "0%",
-    left: "0%",
+    left: "0%"
   },
 
   ticketInfo: {
-    textAlign: "right",
-  },
+    textAlign: "right"
+  }
 }));
 
 const TicketListItemCustom = ({ ticket }) => {
@@ -142,12 +142,12 @@ const TicketListItemCustom = ({ ticket }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleAcepptTicket = async (id) => {
+  const handleAcepptTicket = async id => {
     setLoading(true);
     try {
       await api.put(`/tickets/${id}`, {
         status: "open",
-        userId: user?.id,
+        userId: user?.id
       });
     } catch (err) {
       setLoading(false);
@@ -159,7 +159,7 @@ const TicketListItemCustom = ({ ticket }) => {
     history.push(`/tickets/${ticket.uuid}`);
   };
 
-  const handleSelectTicket = (ticket) => {
+  const handleSelectTicket = ticket => {
     const code = uuidv4();
     const { id, uuid } = ticket;
     setCurrentTicket({ id, uuid, code });
@@ -177,7 +177,7 @@ const TicketListItemCustom = ({ ticket }) => {
                 style={{
                   color: grey[700],
                   cursor: "pointer",
-                  marginRight: 5,
+                  marginRight: 5
                 }}
               />
             </Tooltip>
@@ -226,7 +226,7 @@ const TicketListItemCustom = ({ ticket }) => {
                 style={{
                   color: grey[700],
                   cursor: "pointer",
-                  marginRight: 5,
+                  marginRight: 5
                 }}
               />
             </Tooltip>
@@ -246,13 +246,13 @@ const TicketListItemCustom = ({ ticket }) => {
       <ListItem
         dense
         button
-        onClick={(e) => {
+        onClick={e => {
           if (ticket.status === "pending") return;
           handleSelectTicket(ticket);
         }}
         selected={ticketId && +ticketId === ticket.id}
         className={clsx(classes.ticket, {
-          [classes.pendingTicket]: ticket.status === "pending",
+          [classes.pendingTicket]: ticket.status === "pending"
         })}
       >
         <Tooltip
@@ -302,7 +302,7 @@ const TicketListItemCustom = ({ ticket }) => {
                 className={classes.newMessagesCount}
                 badgeContent={ticket.unreadMessages}
                 classes={{
-                  badge: classes.badgeStyle,
+                  badge: classes.badgeStyle
                 }}
               />
             </span>
@@ -310,12 +310,12 @@ const TicketListItemCustom = ({ ticket }) => {
         />
         {ticket.status === "pending" && (
           <ButtonWithSpinner
-            color="primary"
+            color="#29A71A"
             variant="contained"
             className={classes.acceptButton}
             size="small"
             loading={loading}
-            onClick={(e) => handleAcepptTicket(ticket.id)}
+            onClick={e => handleAcepptTicket(ticket.id)}
           >
             {i18n.t("ticketsList.buttons.accept")}
           </ButtonWithSpinner>
@@ -325,7 +325,7 @@ const TicketListItemCustom = ({ ticket }) => {
             <Badge
               className={classes.closedBadge}
               badgeContent={"closed"}
-              color="primary"
+              color="#29A71A"
             />
           )}
           {ticket.lastMessage && (

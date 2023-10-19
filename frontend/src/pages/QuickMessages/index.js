@@ -15,13 +15,13 @@ import { toast } from "react-toastify";
 import useQuickMessages from "../../hooks/useQuickMessages";
 import { AuthContext } from "../../context/Auth/AuthContext";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   mainPaper: {
     flex: 1,
     padding: theme.spacing(1),
     overflowY: "scroll",
-    ...theme.scrollbarStyles,
-  },
+    ...theme.scrollbarStyles
+  }
 }));
 
 function QuickMessages(props) {
@@ -36,7 +36,7 @@ function QuickMessages(props) {
     list: listMessages,
     save: saveMessage,
     update: updateMessage,
-    deleteRecord: deleteMessage,
+    deleteRecord: deleteMessage
   } = useQuickMessages();
 
   const { user } = useContext(AuthContext);
@@ -65,7 +65,7 @@ function QuickMessages(props) {
     setModalOpen(true);
   };
 
-  const handleOpenToEdit = (message) => {
+  const handleOpenToEdit = message => {
     setMessageSelected(message);
     setModalOpen(true);
   };
@@ -75,7 +75,7 @@ function QuickMessages(props) {
     setMessageSelected({ id: null, message: "", shortcode: "" });
   };
 
-  const handleSave = async (message) => {
+  const handleSave = async message => {
     handleCloseModal();
     try {
       await saveMessage(message);
@@ -86,7 +86,7 @@ function QuickMessages(props) {
     }
   };
 
-  const handleEdit = async (message) => {
+  const handleEdit = async message => {
     handleCloseModal();
     try {
       await updateMessage(message);
@@ -97,7 +97,7 @@ function QuickMessages(props) {
     }
   };
 
-  const handleDelete = async (message) => {
+  const handleDelete = async message => {
     handleCloseModal();
     try {
       await deleteMessage(message.id);
@@ -113,7 +113,7 @@ function QuickMessages(props) {
       <MainHeader>
         <Title>{i18n.t("quickMessages.title")}</Title>
         <MainHeaderButtonsWrapper>
-          <Button variant="contained" color="primary" onClick={handleOpenToAdd}>
+          <Button variant="contained" color="#29A71A" onClick={handleOpenToAdd}>
             {i18n.t("quickMessages.buttons.add")}
           </Button>
         </MainHeaderButtonsWrapper>
@@ -124,7 +124,7 @@ function QuickMessages(props) {
           messages={messages}
           showLoading={loading}
           editMessage={handleOpenToEdit}
-          deleteMessage={(message) => {
+          deleteMessage={message => {
             setMessageSelected(message);
             setShowOnDeleteDialog(true);
           }}
