@@ -179,7 +179,7 @@ const TicketListItem = ({ ticket }) => {
                 <Badge
                   className={classes.closedBadge}
                   badgeContent={"closed"}
-                  color="#29A71A"
+                  color="primary"
                 />
               )}
               {ticket.lastMessage && (
@@ -226,7 +226,7 @@ const TicketListItem = ({ ticket }) => {
         />
         {ticket.status === "pending" && (
           <ButtonWithSpinner
-            color="#29A71A"
+            color="primary"
             variant="contained"
             className={classes.acceptButton}
             size="small"

@@ -293,7 +293,7 @@ const AnnouncementModal = ({ open, onClose, announcementId, reload }) => {
               <DialogActions>
                 {!attachment && !announcement.mediaPath && (
                   <Button
-                    color="#29A71A"
+                    color="primary"
                     onClick={() => attachmentFile.current.click()}
                     disabled={isSubmitting}
                     variant="outlined"
@@ -311,7 +311,7 @@ const AnnouncementModal = ({ open, onClose, announcementId, reload }) => {
                 </Button>
                 <Button
                   type="submit"
-                  color="#29A71A"
+                  color="primary"
                   disabled={isSubmitting}
                   variant="contained"
                   className={classes.btnWrapper}

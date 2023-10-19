@@ -164,7 +164,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                         control={
                           <Field
                             as={Switch}
-                            color="#29A71A"
+                            color="primary"
                             name="isDefault"
                             checked={values.isDefault}
                           />
@@ -294,7 +294,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                 </Button>
                 <Button
                   type="submit"
-                  color="#29A71A"
+                  color="primary"
                   disabled={isSubmitting}
                   variant="contained"
                   className={classes.btnWrapper}

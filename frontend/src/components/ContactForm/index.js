@@ -160,7 +160,7 @@ export function ContactForm({ initialContact, onSave, onCancel }) {
                 <Grid classes={classes.textCenter} xs={6} item>
                   <Button
                     type="submit"
-                    color="#29A71A"
+                    color="primary"
                     disabled={isSubmitting}
                     variant="contained"
                     className={classes.btnWrapper}

@@ -214,14 +214,14 @@ const CampaignsConfig = () => {
             <Grid xs={12} className={classes.textRight} item>
               <Button
                 onClick={() => setShowVariablesForm(!showVariablesForm)}
-                color="#29A71A"
+                color="primary"
                 style={{ marginRight: 10 }}
               >
                 Adicionar Variável
               </Button>
               <Button
                 onClick={saveSettings}
-                color="#29A71A"
+                color="primary"
                 variant="contained"
               >
                 Salvar Configurações
@@ -252,14 +252,14 @@ const CampaignsConfig = () => {
                 <Grid xs={12} className={classes.textRight} item>
                   <Button
                     onClick={() => setShowVariablesForm(!showVariablesForm)}
-                    color="#29A71A"
+                    color="primary"
                     style={{ marginRight: 10 }}
                   >
                     Fechar
                   </Button>
                   <Button
                     onClick={addVariable}
-                    color="#29A71A"
+                    color="primary"
                     variant="contained"
                   >
                     Adicionar

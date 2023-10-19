@@ -222,7 +222,7 @@ const Users = () => {
           />
           <Button
             variant="contained"
-            color="#29A71A"
+            color="primary"
             onClick={handleOpenUserModal}
           >
             {i18n.t("users.buttons.add")}

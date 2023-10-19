@@ -310,7 +310,7 @@ const TicketListItemCustom = ({ ticket }) => {
         />
         {ticket.status === "pending" && (
           <ButtonWithSpinner
-            color="#29A71A"
+            color="primary"
             variant="contained"
             className={classes.acceptButton}
             size="small"
@@ -325,7 +325,7 @@ const TicketListItemCustom = ({ ticket }) => {
             <Badge
               className={classes.closedBadge}
               badgeContent={"closed"}
-              color="#29A71A"
+              color="primary"
             />
           )}
           {ticket.lastMessage && (

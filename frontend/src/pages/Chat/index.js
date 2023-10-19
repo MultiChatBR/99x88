@@ -127,10 +127,10 @@ export function ChatModal({
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="#29A71A">
+        <Button onClick={handleClose} color="primary">
           Fechar
         </Button>
-        <Button onClick={handleSave} color="#29A71A" variant="contained">
+        <Button onClick={handleSave} color="primary" variant="contained">
           Salvar
         </Button>
       </DialogActions>
@@ -329,7 +329,7 @@ function Chat(props) {
                   setDialogType("new");
                   setShowDialog(true);
                 }}
-                color="#29A71A"
+                color="primary"
                 variant="contained"
               >
                 Nova
@@ -371,8 +371,8 @@ function Chat(props) {
         <Grid md={12} item>
           <Tabs
             value={tab}
-            indicatorcolor="#29A71A"
-            textcolor="#29A71A"
+            indicatorcolor="primary"
+            textcolor="primary"
             onChange={(e, v) => setTab(v)}
             aria-label="disabled tabs example"
           >
@@ -385,7 +385,7 @@ function Chat(props) {
             <div className={classes.btnContainer}>
               <Button
                 onClick={() => setShowDialog(true)}
-                color="#29A71A"
+                color="primary"
                 variant="contained"
               >
                 Novo

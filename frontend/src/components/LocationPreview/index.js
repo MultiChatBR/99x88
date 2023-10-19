@@ -40,7 +40,7 @@ const LocationPreview = ({ image, link, description }) => {
                   float: "left"
                 }}
                 variant="subtitle1"
-                color="#29A71A"
+                color="primary"
                 gutterBottom
               >
                 <div
@@ -56,7 +56,7 @@ const LocationPreview = ({ image, link, description }) => {
             <Divider />
             <Button
               fullWidth
-              color="#29A71A"
+              color="primary"
               onClick={handleLocation}
               disabled={!link}
             >

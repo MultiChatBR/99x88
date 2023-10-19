@@ -180,7 +180,7 @@ export function ContactNotes({ ticket }) {
                         setNewNote("");
                         setErrors({});
                       }}
-                      color="#29A71A"
+                      color="primary"
                       variant="outlined"
                       fullWidth
                     >
@@ -190,7 +190,7 @@ export function ContactNotes({ ticket }) {
                   <Grid xs={6} item>
                     <ButtonWithSpinner
                       loading={loading}
-                      color="#29A71A"
+                      color="primary"
                       type="submit"
                       variant="contained"
                       autoFocus

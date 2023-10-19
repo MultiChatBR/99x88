@@ -216,7 +216,7 @@ const TagModal = ({ open, onClose, tagId, reload }) => {
                 </Button>
                 <Button
                   type="submit"
-                  color="#29A71A"
+                  color="primary"
                   disabled={isSubmitting}
                   variant="contained"
                   className={classes.btnWrapper}

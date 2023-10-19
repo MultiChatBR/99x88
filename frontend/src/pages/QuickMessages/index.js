@@ -113,7 +113,7 @@ function QuickMessages(props) {
       <MainHeader>
         <Title>{i18n.t("quickMessages.title")}</Title>
         <MainHeaderButtonsWrapper>
-          <Button variant="contained" color="#29A71A" onClick={handleOpenToAdd}>
+          <Button variant="contained" color="primary" onClick={handleOpenToAdd}>
             {i18n.t("quickMessages.buttons.add")}
           </Button>
         </MainHeaderButtonsWrapper>

@@ -232,7 +232,7 @@ const Tags = () => {
           />
           <Button
             variant="contained"
-            color="#29A71A"
+            color="primary"
             onClick={handleOpenTagModal}
           >
             {i18n.t("tags.buttons.add")}

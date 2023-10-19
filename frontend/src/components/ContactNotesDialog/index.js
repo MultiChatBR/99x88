@@ -189,12 +189,12 @@ export default function ContactNotesDialog({ modalOpen, onClose, ticket }) {
                 <List className={classes.list}>{renderNoteList()}</List>
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleClose} color="#29A71A">
+                <Button onClick={handleClose} color="primary">
                   Fechar
                 </Button>
                 <ButtonWithSpinner
                   loading={loading}
-                  color="#29A71A"
+                  color="primary"
                   type="submit"
                   variant="contained"
                   autoFocus

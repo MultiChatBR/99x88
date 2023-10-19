@@ -242,7 +242,7 @@ const ContactLists = () => {
                 <Button
                   fullWidth
                   variant="contained"
-                  color="#29A71A"
+                  color="primary"
                   onClick={handleOpenContactListModal}
                 >
                   {i18n.t("contactLists.buttons.add")}

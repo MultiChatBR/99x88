@@ -69,7 +69,7 @@ function AnnouncementDialog({ announcement, open, handleClose }) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => handleClose()} color="#29A71A" autoFocus>
+        <Button onClick={() => handleClose()} color="primary" autoFocus>
           Fechar
         </Button>
       </DialogActions>

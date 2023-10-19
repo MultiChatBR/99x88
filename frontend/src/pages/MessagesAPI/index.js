@@ -163,7 +163,7 @@ const MessagesAPI = () => {
               <Grid item xs={12} className={classes.textRight}>
                 <Button
                   type="submit"
-                  color="#29A71A"
+                  color="primary"
                   variant="contained"
                   className={classes.btnWrapper}
                 >
@@ -241,7 +241,7 @@ const MessagesAPI = () => {
               <Grid item xs={12} className={classes.textRight}>
                 <Button
                   type="submit"
-                  color="#29A71A"
+                  color="primary"
                   variant="contained"
                   className={classes.btnWrapper}
                 >
@@ -267,7 +267,7 @@ const MessagesAPI = () => {
       <Typography variant="h5">Documentação para envio de mensagens</Typography>
       <Typography
         variant="h6"
-        color="#29A71A"
+        color="primary"
         className={classes.elementMargin}
       >
         Métodos de Envio
@@ -280,7 +280,7 @@ const MessagesAPI = () => {
       </Typography>
       <Typography
         variant="h6"
-        color="#29A71A"
+        color="primary"
         className={classes.elementMargin}
       >
         Instruções
@@ -308,7 +308,7 @@ const MessagesAPI = () => {
       </Typography>
       <Typography
         variant="h6"
-        color="#29A71A"
+        color="primary"
         className={classes.elementMargin}
       >
         1. Mensagens de Texto
@@ -337,7 +337,7 @@ const MessagesAPI = () => {
       </Grid>
       <Typography
         variant="h6"
-        color="#29A71A"
+        color="primary"
         className={classes.elementMargin}
       >
         2. Mensagens de Media

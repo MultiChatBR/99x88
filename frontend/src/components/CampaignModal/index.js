@@ -473,8 +473,8 @@ const CampaignModal = ({
                   <Grid xs={12} item>
                     <Tabs
                       value={messageTab}
-                      indicatorcolor="#29A71A"
-                      textcolor="#29A71A"
+                      indicatorcolor="primary"
+                      textcolor="primary"
                       onChange={(e, v) => setMessageTab(v)}
                       variant="fullWidth"
                       centered
@@ -615,7 +615,7 @@ const CampaignModal = ({
               <DialogActions>
                 {campaign.status === "CANCELADA" && (
                   <Button
-                    color="#29A71A"
+                    color="primary"
                     onClick={() => restartCampaign()}
                     variant="outlined"
                   >
@@ -624,7 +624,7 @@ const CampaignModal = ({
                 )}
                 {campaign.status === "EM_ANDAMENTO" && (
                   <Button
-                    color="#29A71A"
+                    color="primary"
                     onClick={() => cancelCampaign()}
                     variant="outlined"
                   >
@@ -633,7 +633,7 @@ const CampaignModal = ({
                 )}
                 {!attachment && !campaign.mediaPath && campaignEditable && (
                   <Button
-                    color="#29A71A"
+                    color="primary"
                     onClick={() => attachmentFile.current.click()}
                     disabled={isSubmitting}
                     variant="outlined"
@@ -652,7 +652,7 @@ const CampaignModal = ({
                 {(campaignEditable || campaign.status === "CANCELADA") && (
                   <Button
                     type="submit"
-                    color="#29A71A"
+                    color="primary"
                     disabled={isSubmitting}
                     variant="contained"
                     className={classes.btnWrapper}

@@ -102,7 +102,7 @@ const TicketActionButtonsCustom = ({ ticket }) => {
             <Tooltip title={i18n.t("messagesList.header.buttons.resolve")}>
               <IconButton
                 onClick={e => handleUpdateTicketStatus(e, "closed", user?.id)}
-                color="#29A71A"
+                color="primary"
               >
                 <CheckCircleIcon />
               </IconButton>
@@ -120,7 +120,7 @@ const TicketActionButtonsCustom = ({ ticket }) => {
 						loading={loading}
 						size="small"
 						variant="contained"
-						color="#29A71A"
+						color="primary"
 						onClick={e => handleUpdateTicketStatus(e, "closed", user?.id)}
 					>
 						{i18n.t("messagesList.header.buttons.resolve")}
@@ -141,7 +141,7 @@ const TicketActionButtonsCustom = ({ ticket }) => {
           loading={loading}
           size="small"
           variant="contained"
-          color="#29A71A"
+          color="primary"
           onClick={e => handleUpdateTicketStatus(e, "open", user?.id)}
         >
           {i18n.t("messagesList.header.buttons.accept")}

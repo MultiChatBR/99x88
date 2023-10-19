@@ -87,7 +87,7 @@ const TicketActionButtons = ({ ticket }) => {
             loading={loading}
             size="small"
             variant="contained"
-            color="#29A71A"
+            color="primary"
             onClick={e => handleUpdateTicketStatus(e, "closed", user?.id)}
           >
             {i18n.t("messagesList.header.buttons.resolve")}
@@ -108,7 +108,7 @@ const TicketActionButtons = ({ ticket }) => {
           loading={loading}
           size="small"
           variant="contained"
-          color="#29A71A"
+          color="primary"
           onClick={e => handleUpdateTicketStatus(e, "open", user?.id)}
         >
           {i18n.t("messagesList.header.buttons.accept")}

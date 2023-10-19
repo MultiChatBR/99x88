@@ -153,8 +153,8 @@ const SettingsCustom = () => {
       <Paper className={classes.mainPaper} elevation={1}>
         <Tabs
           value={tab}
-          indicatorcolor="#29A71A"
-          textcolor="#29A71A"
+          indicatorcolor="primary"
+          textcolor="primary"
           scrollButtons="on"
           variant="scrollable"
           onChange={handleTabChange}

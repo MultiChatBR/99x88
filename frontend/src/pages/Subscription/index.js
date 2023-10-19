@@ -120,7 +120,7 @@ const Contacts = () => {
           <div>
             <Button
               variant="contained"
-              color="#29A71A"
+              color="primary"
               onClick={handleOpenContactModal}
               fullWidth
             >

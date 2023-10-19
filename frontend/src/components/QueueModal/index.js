@@ -207,8 +207,8 @@ const QueueModal = ({ open, onClose, queueId }) => {
         </DialogTitle>
         <Tabs
           value={tab}
-          indicatorcolor="#29A71A"
-          textcolor="#29A71A"
+          indicatorcolor="primary"
+          textcolor="primary"
           onChange={(_, v) => setTab(v)}
           aria-label="disabled tabs example"
         >
@@ -341,7 +341,7 @@ const QueueModal = ({ open, onClose, queueId }) => {
                     </Button>
                     <Button
                       type="submit"
-                      color="#29A71A"
+                      color="primary"
                       disabled={isSubmitting}
                       variant="contained"
                       className={classes.btnWrapper}

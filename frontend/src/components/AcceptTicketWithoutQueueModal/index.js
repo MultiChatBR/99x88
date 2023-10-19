@@ -103,7 +103,7 @@ const AcceptTicketWithoutSelectQueue = ({
             type="button"
             disabled={selectedQueue === ""}
             onClick={() => handleUpdateTicketStatus(selectedQueue)}
-            color="#29A71A"
+            color="primary"
             loading={loading}
           >
             Reabrir

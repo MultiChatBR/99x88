@@ -67,7 +67,7 @@ const TicketAdvanced = props => {
         <Button
           onClick={() => setOption(1)}
           variant="contained"
-          color="#29A71A"
+          color="primary"
         >
           Selecionar Ticket
         </Button>

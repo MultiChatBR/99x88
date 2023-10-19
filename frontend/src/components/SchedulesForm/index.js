@@ -142,7 +142,7 @@ function SchedulesForm(props) {
             <ButtonWithSpinner
               loading={loading}
               type="submit"
-              color="#29A71A"
+              color="primary"
               variant="contained"
             >
               {labelSaveButton ?? "Salvar"}

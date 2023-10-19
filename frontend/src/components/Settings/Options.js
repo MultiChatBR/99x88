@@ -407,8 +407,8 @@ export default function Options(props) {
       </Grid>
       <Grid spacing={3} container>
         <Tabs
-          indicatorcolor="#29A71A"
-          textcolor="#29A71A"
+          indicatorcolor="primary"
+          textcolor="primary"
           scrollButtons="on"
           variant="scrollable"
           className={classes.tab}
@@ -423,8 +423,8 @@ export default function Options(props) {
       {/*-----------------IXC-----------------*/}
       <Grid spacing={3} container style={{ marginBottom: 10 }}>
         <Tabs
-          indicatorcolor="#29A71A"
-          textcolor="#29A71A"
+          indicatorcolor="primary"
+          textcolor="primary"
           scrollButtons="on"
           variant="scrollable"
           className={classes.tab}
@@ -471,8 +471,8 @@ export default function Options(props) {
       {/*-----------------MK-AUTH-----------------*/}
       <Grid spacing={3} container style={{ marginBottom: 10 }}>
         <Tabs
-          indicatorcolor="#29A71A"
-          textcolor="#29A71A"
+          indicatorcolor="primary"
+          textcolor="primary"
           scrollButtons="on"
           variant="scrollable"
           className={classes.tab}
@@ -537,8 +537,8 @@ export default function Options(props) {
       {/*-----------------ASAAS-----------------*/}
       <Grid spacing={3} container style={{ marginBottom: 10 }}>
         <Tabs
-          indicatorcolor="#29A71A"
-          textcolor="#29A71A"
+          indicatorcolor="primary"
+          textcolor="primary"
           scrollButtons="on"
           variant="scrollable"
           className={classes.tab}

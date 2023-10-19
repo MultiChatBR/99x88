@@ -229,7 +229,7 @@ const ContactModal = ({ open, onClose, contactId, initialValues, onSave }) => {
                         <Button
                           style={{ flex: 1, marginTop: 8 }}
                           variant="outlined"
-                          color="#29A71A"
+                          color="primary"
                           onClick={() => push({ name: "", value: "" })}
                         >
                           {`+ ${i18n.t("contactModal.buttons.addExtraInfo")}`}
@@ -250,7 +250,7 @@ const ContactModal = ({ open, onClose, contactId, initialValues, onSave }) => {
                 </Button>
                 <Button
                   type="submit"
-                  color="#29A71A"
+                  color="primary"
                   disabled={isSubmitting}
                   variant="contained"
                   className={classes.btnWrapper}

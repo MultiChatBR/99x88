@@ -252,7 +252,7 @@ const LoggedInLayout = ({ children }) => {
       <AppBar
         position="absolute"
         className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}
-        color="#29A71A"
+        color="primary"
       >
         <Toolbar variant="dense" className={classes.toolbar}>
           <IconButton

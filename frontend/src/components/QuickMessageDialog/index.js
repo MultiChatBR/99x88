@@ -156,12 +156,12 @@ function QuickMessageDialog(props) {
               </Grid>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} color="#29A71A">
+              <Button onClick={handleClose} color="primary">
                 Cancelar
               </Button>
               <ButtonWithSpinner
                 loading={loading}
-                color="#29A71A"
+                color="primary"
                 type="submit"
                 variant="contained"
                 autoFocus

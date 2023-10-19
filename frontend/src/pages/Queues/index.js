@@ -183,7 +183,7 @@ const Queues = () => {
         <MainHeaderButtonsWrapper>
           <Button
             variant="contained"
-            color="#29A71A"
+            color="primary"
             onClick={handleOpenQueueModal}
           >
             {i18n.t("queues.buttons.add")}

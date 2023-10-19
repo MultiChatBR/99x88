@@ -180,7 +180,7 @@ export function PlanManagerForm(props) {
                     loading={loading}
                     type="submit"
                     variant="contained"
-                    color="#29A71A"
+                    color="primary"
                   >
                     Salvar
                   </ButtonWithSpinner>

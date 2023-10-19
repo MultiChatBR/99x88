@@ -262,7 +262,7 @@ const ScheduleModal = ({
                 {(schedule.sentAt === null || schedule.sentAt === "") && (
                   <Button
                     type="submit"
-                    color="#29A71A"
+                    color="primary"
                     disabled={isSubmitting}
                     variant="contained"
                     className={classes.btnWrapper}

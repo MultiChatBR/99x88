@@ -424,7 +424,7 @@ const MessageInput = ({ ticketStatus }) => {
                   setSignMessage(e.target.checked);
                 }}
                 name="showAllTickets"
-                color="#29A71A"
+                color="primary"
               />
             }
           />

@@ -353,7 +353,7 @@ export function CompanyForm(props) {
                           loading={loading}
                           onClick={() => incrementDueDate()}
                           variant="contained"
-                          color="#29A71A"
+                          color="primary"
                         >
                           + Vencimento
                         </ButtonWithSpinner>
@@ -365,7 +365,7 @@ export function CompanyForm(props) {
                           loading={loading}
                           onClick={() => handleOpenModalUsers()}
                           variant="contained"
-                          color="#29A71A"
+                          color="primary"
                         >
                           Usuário
                         </ButtonWithSpinner>
@@ -379,7 +379,7 @@ export function CompanyForm(props) {
                       loading={loading}
                       type="submit"
                       variant="contained"
-                      color="#29A71A"
+                      color="primary"
                     >
                       Salvar
                     </ButtonWithSpinner>

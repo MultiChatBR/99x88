@@ -115,7 +115,7 @@ const Login = () => {
             type="submit"
             fullWidth
             variant="contained"
-            color="#29A71A"
+            color="primary"
             className={classes.submit}
           >
             {i18n.t("login.buttons.submit")}

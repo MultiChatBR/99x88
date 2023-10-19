@@ -443,7 +443,7 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
           <div className={classes.downloadMedia}>
             <Button
               startIcon={<GetApp />}
-              color="#29A71A"
+              color="primary"
               variant="outlined"
               target="_blank"
               href={message.mediaUrl}

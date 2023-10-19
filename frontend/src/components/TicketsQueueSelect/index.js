@@ -45,7 +45,7 @@ const TicketsQueueSelect = ({
                     color: queue.color
                   }}
                   size="small"
-                  color="#29A71A"
+                  color="primary"
                   checked={selectedQueueIds.indexOf(queue.id) > -1}
                 />
                 <ListItemText primary={queue.name} />

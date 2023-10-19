@@ -269,7 +269,7 @@ const Schedules = () => {
           />
           <Button
             variant="contained"
-            color="#29A71A"
+            color="primary"
             onClick={handleOpenScheduleModal}
           >
             {i18n.t("schedules.buttons.add")}

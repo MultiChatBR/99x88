@@ -160,7 +160,7 @@ export default function CheckoutPage(props) {
                         disabled={isSubmitting}
                         type="submit"
                         variant="contained"
-                        color="#29A71A"
+                        color="primary"
                         className={classes.button}
                       >
                         {isLastStep ? "PAGAR" : "PRÓXIMO"}

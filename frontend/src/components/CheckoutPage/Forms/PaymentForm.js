@@ -181,7 +181,7 @@ export default function Pricing(props) {
                 <Button
                   fullWidth
                   variant={tier.buttonVariant}
-                  color="#29A71A"
+                  color="primary"
                   onClick={() => {
                     if (tier.custom) {
                       setFieldValue(

@@ -158,7 +158,7 @@ const FormCompany = () => {
             type="submit"
             fullWidth
             variant="contained"
-            color="#29A71A"
+            color="primary"
             className={classes.submit}
           >
             {i18n.t("companies.form.submit")}

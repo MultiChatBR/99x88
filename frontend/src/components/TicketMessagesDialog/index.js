@@ -174,7 +174,7 @@ export default function TicketMessagesDialog({ open, handleClose, ticketId }) {
       <TicketHeader loading={loading}>{renderTicketInfo()}</TicketHeader>
       <ReplyMessageProvider>{renderMessagesList()}</ReplyMessageProvider>
       <DialogActions>
-        <Button onClick={handleClose} color="#29A71A">
+        <Button onClick={handleClose} color="primary">
           Fechar
         </Button>
       </DialogActions>

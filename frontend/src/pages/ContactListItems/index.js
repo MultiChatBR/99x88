@@ -304,7 +304,7 @@ const ContactListItems = () => {
                 <Button
                   fullWidth
                   variant="contained"
-                  color="#29A71A"
+                  color="primary"
                   onClick={goToContactLists}
                 >
                   {i18n.t("contactListItems.buttons.lists")}
@@ -314,7 +314,7 @@ const ContactListItems = () => {
                 <Button
                   fullWidth
                   variant="contained"
-                  color="#29A71A"
+                  color="primary"
                   onClick={() => {
                     fileUploadRef.current.value = null;
                     fileUploadRef.current.click();
@@ -327,7 +327,7 @@ const ContactListItems = () => {
                 <Button
                   fullWidth
                   variant="contained"
-                  color="#29A71A"
+                  color="primary"
                   onClick={handleOpenContactListItemModal}
                 >
                   {i18n.t("contactListItems.buttons.add")}

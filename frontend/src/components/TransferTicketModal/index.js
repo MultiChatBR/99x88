@@ -132,7 +132,7 @@ const TransferTicketModal = ({ modalOpen, onClose, ticketid }) => {
           <ButtonWithSpinner
             variant="contained"
             type="submit"
-            color="#29A71A"
+            color="primary"
             loading={loading}
           >
             {i18n.t("transferTicketModal.buttons.ok")}

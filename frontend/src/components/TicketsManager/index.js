@@ -132,8 +132,8 @@ const TicketsManager = () => {
           value={tab}
           onChange={handleChangeTab}
           variant="fullWidth"
-          indicatorcolor="#29A71A"
-          textcolor="#29A71A"
+          indicatorcolor="primary"
+          textcolor="primary"
           aria-label="icon label tabs example"
         >
           <Tab
@@ -172,7 +172,7 @@ const TicketsManager = () => {
           <>
             <Button
               variant="outlined"
-              color="#29A71A"
+              color="primary"
               onClick={() => setNewTicketModalOpen(true)}
             >
               {i18n.t("ticketsManager.buttons.newTicket")}
@@ -192,7 +192,7 @@ const TicketsManager = () => {
                         setShowAllTickets(prevState => !prevState)
                       }
                       name="showAllTickets"
-                      color="#29A71A"
+                      color="primary"
                     />
                   }
                 />

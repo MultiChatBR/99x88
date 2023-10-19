@@ -136,7 +136,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
           {option.edition && (
             <>
               <IconButton
-                color="#29A71A"
+                color="primary"
                 variant="outlined"
                 size="small"
                 className={classes.button}
@@ -227,7 +227,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
           {option.id !== undefined && (
             <>
               <Button
-                color="#29A71A"
+                color="primary"
                 size="small"
                 onClick={() => handleAddOption(index)}
                 startIcon={<AddIcon />}
@@ -329,7 +329,7 @@ export function QueueOptions({ queueId }) {
       <Typography>
         Opções
         <Button
-          color="#29A71A"
+          color="primary"
           size="small"
           onClick={addOption}
           startIcon={<AddIcon />}
